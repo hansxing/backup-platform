@@ -1,0 +1,25 @@
+
+services:
+  backup-platform:
+    image: backup-platform:v1.4.4
+    container_name: deey-backup-platform
+    ports:
+      - "39186:8080"
+    environment:
+      WEB_USERNAME: deeyadm
+      WEB_PASSWORD: 9rZukVgbTfq2d351
+    volumes:
+      - ./instance:/data/instance
+      - ./backups:/data/backups
+    restart: unless-stopped
+    cpus: '4'
+    mem_limit: 4g
+    mem_reservation: 2g
+    networks:
+      - backup-platform-net
+
+networks:
+  backup-platform-net:
+    name: backup-platform-net
+    external: true
+

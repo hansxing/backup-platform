@@ -1,0 +1,18 @@
+
+docker network create --driver bridge --subnet 192.168.241.0/24 --gateway 192.168.241.1 backup-platform-net
+
+docker network create --driver bridge --subnet 192.169.100.0/24 --gateway 192.169.100.1 backup-platform-net
+docker network create --driver bridge --subnet 192.169.100.0/24 --gateway 192.169.100.1 backup-platform-net
+docker network create --driver bridge --subnet 192.169.100.0/24 --gateway 192.169.100.1 backup-platform-net
+
+WEB_USERNAME / WEB_PASSWORD
+
+docker network ls -q | xargs docker network inspect --format '{{.Name}}: {{range .IPAM.Config}}{{.Subnet}}{{end}}'
+
+# 有网机器导出
+docker pull ghcr.io/zhh9126/backup-platform:v1.4.4
+docker save ghcr.io/zhh9126/backup-platform:v1.4.4 -o backup-platform_v1.4.4-20260909.tar
+# 内网机器导入
+docker load -i backup-platform.tar
+docker tag ghcr.io/zhh9126/backup-platform:v1.4.4 backup-platform:v1.4.4
+

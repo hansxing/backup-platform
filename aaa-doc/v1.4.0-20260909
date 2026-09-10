@@ -1,0 +1,13 @@
+
+# 有网机器导出
+docker save ghcr.io/zhh9126/backup-platform:v1.3.3 -o backup-platform.tar
+# 内网机器导入
+docker load -i backup-platform.tar
+
+============================================================================
+
+docker build -t backup-platform:v1.4.0-20260909 .
+docker save backup-platform:v1.4.0-20260909 -o backup-platform_v1.4.0-20260909.tar
+
+默认账号 admin / admin123
+
